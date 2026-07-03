@@ -451,7 +451,7 @@ class PEFANTTClient:
         payload = {'cpfCnpj': documento,}
         print('payload', payload)
         res = requests.post(
-            url, params=payload, json=payload,
+            url, params=payload, json={},
             verify=False,
             cert=(self.certificado.cert_file, self.certificado.key_file),
             headers={'Content-Type': 'application/json', 'Accept': 'application/json'}
