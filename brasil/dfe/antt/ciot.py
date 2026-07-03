@@ -469,8 +469,8 @@ class PEFANTTClient:
         print(res)
 
     def _post(self, endpoint: str, payload: dict) -> dict:
-        id_op = self._gerar_id_op(self.documento)
-        payload['IdOperacaoTransporte'] = id_op
+        # id_op = self._gerar_id_op(self.documento)
+        # payload['IdOperacaoTransporte'] = id_op
         url = f'{AMBIENTE[self.tp_amb]}/api/{endpoint}'
         headers = {'Content-Type': 'application/json'}
         if self.caminho:
