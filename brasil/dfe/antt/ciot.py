@@ -450,7 +450,12 @@ class PEFANTTClient:
         print('gear ir para', documento)
         payload = {'CnpjCpf': documento,}
         print('payload', payload)
-        res = requests.post(url, params=payload, json=payload)
+        res = requests.post(
+            url, params=payload, json=payload,
+            verify=False,
+            cert=(self.certificado.cert_file, self.certificado.key_file),
+            headers={'Content-Type': 'application/json', 'Accept': 'application/json'}
+        )
         print(res.content)
         with open(os.path.join(self.caminho, f'id-op-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
             f.write(res.text)
