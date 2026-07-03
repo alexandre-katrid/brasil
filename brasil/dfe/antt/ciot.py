@@ -398,7 +398,6 @@ class PEFANTTClient:
         self.password = password
         self.certificado = Certificado(pfx, password)
         self.caminho = caminho
-        print('caminho ciot', caminho)
 
     @classmethod
     def prepare(cls, payload: DeclaracaoOperacaoTransporteRequest, request_type: type[TypedDict]) -> None:
@@ -446,7 +445,7 @@ class PEFANTTClient:
         return True
 
     def _post(self, endpoint: str, payload: dict) -> dict:
-        url = f'{AMBIENTE[self.tp_amb]}/{endpoint}'
+        url = f'{AMBIENTE[self.tp_amb]}/api/{endpoint}'
         headers = {'Content-Type': 'application/json'}
         if self.caminho:
             with open(os.path.join(self.caminho, f'env-{endpoint}-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
