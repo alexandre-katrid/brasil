@@ -446,7 +446,7 @@ class PEFANTTClient:
         return True
 
     def _gerar_id_op(self, documento: str):
-        url = f'{AMBIENTE[self.tp_amb]}/Gerar'
+        url = f'{AMBIENTE[self.tp_amb]}/gerar'
         print('gear ir para', documento)
         payload = {'cpfCnpj': documento,}
         print('payload', payload)
