@@ -447,7 +447,9 @@ class PEFANTTClient:
 
     def _gerar_id_op(self, documento: str):
         url = f'{AMBIENTE[self.tp_amb]}/gerar'
+        print('gear ir para', documento)
         payload = {'CnpjCpf': documento,}
+        print('payload', payload)
         res = requests.post(url, json=payload)
         print(res.content)
         with open(os.path.join(self.caminho, f'id-op-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
