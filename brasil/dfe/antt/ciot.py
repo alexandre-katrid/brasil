@@ -452,7 +452,7 @@ class PEFANTTClient:
         print('payload', payload)
         res = requests.post(
             url,
-            params=payload,
+            # params=payload,
             json=payload,
             verify=False,
             cert=(self.certificado.cert_file, self.certificado.key_file),
