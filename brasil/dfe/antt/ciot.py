@@ -444,7 +444,22 @@ class PEFANTTClient:
             validator(payload)
         return True
 
+    def _gerar_id_op(self, documento: str):
+        url = f'{AMBIENTE[self.tp_amb]}/api/Gerar'
+        payload = {'CnpjCpf': documento}
+        res = requests.post(url, json=payload)
+        print(res.content)
+        with open(os.path.join(self.caminho, f'id-op-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
+            f.write(res.text)
+        data = res.json()
+        if 'Id' in data:
+            return data['Id']
+        raise ValueError('Erro ao gerar ID de operação')
+        print(res)
+
     def _post(self, endpoint: str, payload: dict) -> dict:
+        id_op = self._gerar_id_op(payload['CpfCnpjContratado'])
+        payload['IdOperacaoTransporte'] = id_op
         url = f'{AMBIENTE[self.tp_amb]}/api/{endpoint}'
         headers = {'Content-Type': 'application/json'}
         if self.caminho:
