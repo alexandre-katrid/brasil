@@ -398,6 +398,7 @@ class PEFANTTClient:
         self.password = password
         self.certificado = Certificado(pfx, password)
         self.caminho = caminho
+        print('caminho ciot', caminho)
 
     @classmethod
     def prepare(cls, payload: DeclaracaoOperacaoTransporteRequest, request_type: type[TypedDict]) -> None:
