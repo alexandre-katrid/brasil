@@ -392,12 +392,13 @@ validate_rules = {
 
 
 class PEFANTTClient:
-    def __init__(self, tp_amb: Literal['1', '2'], pfx: bytes, password: str, caminho: str = None):
+    def __init__(self, tp_amb: Literal['1', '2'], pfx: bytes, password: str, documento: str, caminho: str = None):
         self.tp_amb = tp_amb
         self.pfx = pfx
         self.password = password
         self.certificado = Certificado(pfx, password)
         self.caminho = caminho
+        self.documento = documento
 
     @classmethod
     def prepare(cls, payload: DeclaracaoOperacaoTransporteRequest, request_type: type[TypedDict]) -> None:
@@ -446,7 +447,7 @@ class PEFANTTClient:
 
     def _gerar_id_op(self, documento: str):
         url = f'{AMBIENTE[self.tp_amb]}/gerar'
-        payload = {'CnpjCpf': documento}
+        payload = {'CnpjCpf': documento,}
         res = requests.post(url, json=payload)
         print(res.content)
         with open(os.path.join(self.caminho, f'id-op-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
@@ -458,7 +459,7 @@ class PEFANTTClient:
         print(res)
 
     def _post(self, endpoint: str, payload: dict) -> dict:
-        id_op = self._gerar_id_op(payload['CpfCnpjContratado'])
+        id_op = self._gerar_id_op(self.documento)
         payload['IdOperacaoTransporte'] = id_op
         url = f'{AMBIENTE[self.tp_amb]}/api/{endpoint}'
         headers = {'Content-Type': 'application/json'}
