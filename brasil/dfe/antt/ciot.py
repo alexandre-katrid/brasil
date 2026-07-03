@@ -456,7 +456,7 @@ class PEFANTTClient:
             cert=(self.certificado.cert_file, self.certificado.key_file),
             headers={'Content-Type': 'application/json', 'Accept': 'application/json'}
         )
-        print(res.url)
+        print(res.status_code, res.url)
         print(res.content)
         with open(os.path.join(self.caminho, f'id-op-{datetime.datetime.now().isoformat()}.json'), 'w') as f:
             f.write(res.text)
