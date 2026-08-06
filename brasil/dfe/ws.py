@@ -112,7 +112,7 @@ class BaseService:
         envelope = self.envelope()
         self.enviar(envelope)
         self.finalizar()
-        self.ok = str(self.response.status_code) == '200'
+        self.ok = self.response.status_code == 200
         return self.ok
 
     def preparar(self):
@@ -150,6 +150,7 @@ class BaseService:
             self.url, data, verify=False,
             cert=(self.config.certificado.cert_file, self.config.certificado.key_file),
             headers=self.headers,
+            timeout=60,
         )
 
     @property
