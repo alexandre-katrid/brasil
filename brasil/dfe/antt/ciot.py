@@ -723,7 +723,9 @@ class PEFANTTClient:
     def cancelamento_operacao_transporte(
         self,
         payload: CancelamentoOperacaoTransporteRequest,
-    ) -> CancelamentoOperacaoTransporteResponse: ...
+    ) -> CancelamentoOperacaoTransporteResponse:
+        self.prepare(payload, CancelamentoOperacaoTransporteRequest)
+        return self._post('CancelamentoOperacaoTransporte', payload)
 
     def retificacao_operacao_transporte(
         self,
