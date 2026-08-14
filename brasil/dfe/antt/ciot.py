@@ -286,11 +286,11 @@ class InfIndicadoresOperacionaisDOT(TypedDict):
 
 
 class DeclaracaoOperacaoTransporteRequest(TypedDict):
-    IdOperacaoTransporte: Annotated[
+    IdOperacaoTransporte: NotRequired[Annotated[
         str,
         '#1 Código Identificador da Operação de Transporte.',
         Rules('B17', 'B24', 'B25', 'B31', 'B32', 'B33', 'B115'),
-    ]
+    ]]
     TipoOperacao: Annotated[
         TipoOperacao,
         '#2 Tipo da operação: 1 = Operação Carga Lotação; 2 = Operação Carga Fracionada; 3 = Operação TAC-Agregado.',
