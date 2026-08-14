@@ -714,10 +714,10 @@ class PEFANTTClient:
     def declaracao_operacao_transporte(
         self, payload: DeclaracaoOperacaoTransporteRequest
     ) -> DeclaracaoOperacaoTransporteResponse:
-        self.prepare(payload, DeclaracaoOperacaoTransporteRequest)
         if 'IdOperacaoTransporte' not in payload:
             id_op = self._gerar_id_op_http(self.documento)
             payload['IdOperacaoTransporte'] = id_op
+        self.prepare(payload, DeclaracaoOperacaoTransporteRequest)
         return self._post('DeclaracaoOperacaoTransporte', payload)
 
     def cancelamento_operacao_transporte(
