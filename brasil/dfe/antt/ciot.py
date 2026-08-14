@@ -714,7 +714,7 @@ class PEFANTTClient:
     def declaracao_operacao_transporte(
         self, payload: DeclaracaoOperacaoTransporteRequest
     ) -> DeclaracaoOperacaoTransporteResponse:
-        if 'IdOperacaoTransporte' not in payload:
+        if not payload.get('IdOperacaoTransporte'):
             id_op = self._gerar_id_op_http(self.documento)
             payload['IdOperacaoTransporte'] = id_op
         self.prepare(payload, DeclaracaoOperacaoTransporteRequest)
