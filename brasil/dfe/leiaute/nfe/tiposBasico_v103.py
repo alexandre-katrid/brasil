@@ -12,6 +12,9 @@ from brasil.dfe.xsd import Choice, SimpleType, ComplexType, Attribute, Element, 
 TCodUfIBGE: TypeAlias = Annotated[str, SimpleType, """Tipo Código da UF da tabela do IBGE""", ]
 
 
+TnItem: TypeAlias = Annotated[str, SimpleType, """Tipo correspondente ao atributo “nItem”""", ]
+
+
 TCodMunIBGE: TypeAlias = Annotated[str, SimpleType, """Tipo Código do Município da tabela do IBGE""", ]
 
 
@@ -169,6 +172,12 @@ TTime: TypeAlias = Annotated[str, SimpleType, """ Tipo hora HH:MM:SS // tipo acr
 
 
 TDateTimeUTC: TypeAlias = Annotated[str, SimpleType, """Data e Hora, formato UTC (AAAA-MM-DDThh:mm:ssTZD, onde TZD = +hh:mm ou -hh:mm)""", ]
+
+
+TDec_0302_04: TypeAlias = Annotated[Decimal, SimpleType, """Tipo Decimal com até 3 dígitos inteiros, podendo ter de 2 até 4 decimais""", (3, 2)]
+
+
+TDec1302: TypeAlias = Annotated[Decimal, SimpleType, """Tipo Decimal com 15 dígitos, sendo 13 de corpo e 2 decimais""", (13, 2)]
 
 
 TPlaca: TypeAlias = Annotated[str, SimpleType, ]

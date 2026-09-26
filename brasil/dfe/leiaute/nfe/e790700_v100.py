@@ -28,6 +28,12 @@ class detEvento(ComplexType):
         qItem: Annotated[TDec_1104Neg, Element] = None
         motAlteracao: Annotated[str, Element] = None
 
+        class _enquad(ComplexType):
+            """Grupo de informações do enquadramento do item"""
+            cEnq: Annotated[ElementList[str], Element] = None
+
+        enquad: Annotated[_enquad, Element] = None
+
     itensAverbados: Annotated[ElementList[_itensAverbados], Element] = None
 
 

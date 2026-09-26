@@ -11,7 +11,7 @@ from .tiposBasico_v103 import *
 
 
 class detEvento(ComplexType):
-    """Schema XML de validação do evento de Cancelamento do Comprovante de Entrega de NF-e"""
+    """Schema XML de validação do evento de Cancelamento do Comprovante de Entrega da NF-e"""
     _xmlns = "http://www.portalfiscal.inf.br/nfe"
     versao: Annotated[str, Attribute(enumeration=['1.00'])] = None
     descEvento: Annotated[str, Element] = None

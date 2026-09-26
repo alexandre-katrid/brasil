@@ -45,15 +45,18 @@ class TEvento(ComplexType):
                 qItem: Annotated[TDec_1104Neg, Element] = None
                 motAlteracao: Annotated[str, Element] = None
 
+                class _enquad(ComplexType):
+                    """Grupo de informações do enquadramento do item"""
+                    cEnq: Annotated[ElementList[str], Element] = None
+
+                enquad: Annotated[_enquad, Element] = None
+
             itensAverbados: Annotated[ElementList[_itensAverbados], Element] = None
 
         detEvento: Annotated[_detEvento, Element] = None
 
     infEvento: Annotated[_infEvento, Element] = None
     Signature: Annotated[XmlSignature, Element] = None
-
-
-TCOrgaoIBGE: TypeAlias = Annotated[str, SimpleType, """Tipo Código de orgão (UF da tabela do IBGE)""", ]
 
 
 class TretEvento(ComplexType):

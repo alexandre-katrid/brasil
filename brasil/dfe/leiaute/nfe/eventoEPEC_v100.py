@@ -13,9 +13,6 @@ from .tiposBasico_v310 import *
 TVerEvento: TypeAlias = Annotated[str, SimpleType, """Versão do Tipo do Evento""", ]
 
 
-TCOrgaoIBGE: TypeAlias = Annotated[str, SimpleType, """Tipo Código de orgão (UF da tabela do IBGE + 91 RFB)""", ]
-
-
 class envEvento(ComplexType):
     _xmlns = "http://www.portalfiscal.inf.br/nfe"
     versao: Annotated[TVerEvento, Attribute] = None

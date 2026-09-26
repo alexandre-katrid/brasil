@@ -1,3 +1,4 @@
+import builtins
 import datetime
 import re
 from decimal import Decimal
@@ -88,7 +89,7 @@ class ElementType(type):
 
 class ComplexType(SimpleType, metaclass=ElementType):
     _xmlns: str = None
-    _props: dict[str, XmlProp] = None
+    _props: builtins.dict[str, XmlProp] = None
     _cls: 'ComplexType' = None
     _xmltmp = None
     _parent = None

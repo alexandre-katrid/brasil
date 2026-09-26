@@ -11,7 +11,7 @@ from .leiauteConfRecebto_v100 import *
 
 
 class retEnvEvento(TRetEnvEvento):
-    """Schema XML de Retorno da envio do Evento Confirmação de Recebimento"""
+    """Schema XML de Retorno da envio do Evento Confirmacao de Recebimento"""
     _xmlns = "http://www.portalfiscal.inf.br/nfe"
 
 
