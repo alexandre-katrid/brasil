@@ -154,7 +154,7 @@ class Certificado(object):
         uri = '#' + ref
         signed = signer.sign(
             xml, key=self.key, cert=self.cert, reference_uri=uri, id_attribute='Id',
-        ).find(".//{http://www.w3.org/2000/09/xmldsig#}Signature")
+        ).find('Signature')
         res = etree.tostring(signed, encoding=str)
         return res
 
