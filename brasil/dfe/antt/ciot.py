@@ -200,7 +200,7 @@ class InfPagamentoDOT(TypedDict):
     ]
     CodigoInstituicaoFinanceira: NotRequired[
         Annotated[
-            int,
+            str,
             '#16.2 Código da instituição financeira. Obrigatório quando TipoPagamento = 1, 2, 3 ou 4. Campos bancários não devem ser informados quando TipoPagamento diferente de 1, 2, 3 ou 4.',
             Rules('B92', 'B99'),
         ]
